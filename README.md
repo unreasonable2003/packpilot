@@ -1,41 +1,40 @@
 # PackPilot
 
-PackPilot is a VS Code extension for discovering and installing packages from the current development workspace.
+PackPilot is a VS Code extension for discovering and installing `npm` packages from the current development workspace.
 
-## MVP Scope
+## What the MVP does
 
-- Search `npm` packages by name or by describing what you need
-- Show package metadata, trust signals, and version options
-- Install the selected package safely into the current workspace
-- Keep AI assistance optional and explainable
+- Search `npm` packages by exact name or natural-language intent
+- Load live package metadata from the npm registry
+- Show trust signals like repository links, homepage links, publish recency, version history, and weekly downloads
+- Install a selected version into the current workspace as either a dependency or dev dependency
+- Stream install logs directly inside VS Code
 
-## Why this repo exists
+## Current architecture
 
-This repository is the local foundation for the first production MVP:
-
-- extension UI
-- search orchestration
-- local install agent
-- future backend and AI integration
+- `src/extension.ts`
+  - VS Code activation entry point
+- `src/ui/`
+  - panel controller and webview rendering
+- `src/services/`
+  - npm registry lookup and install services
+- `src/workspace/`
+  - workspace and package manifest access
+- `src/core/`
+  - shared HTTP, validation, and error infrastructure
+- `src/domain/`
+  - message contracts and shared types
 
 ## Local Development
 
-This repo is scaffolded for a TypeScript-based VS Code extension.
+1. Run `npm install`
+2. Run `npm run build`
+3. Open the repo in VS Code
+4. Launch the extension host from the Run and Debug panel
+5. Execute `PackPilot: Open Package Search`
 
-Planned commands:
+## MVP Notes
 
-- `npm install`
-- `npm run build`
-- `npm run watch`
-
-## Main Files
-
-- `src/extension.ts` - extension entry point
-- `src/search.ts` - package search orchestration
-- `src/agent.ts` - local install execution
-- `src/types.ts` - shared types
-- `first-mvp-lld.md` - design doc for the MVP
-
-## Notes
-
-The current scaffold is intentionally minimal so we can harden it step by step without losing the production-grade shape.
+- The search experience is live against the npm registry.
+- The install flow is local and constrained to the current workspace.
+- The design doc for the original MVP is in [first-mvp-lld.md](./first-mvp-lld.md).

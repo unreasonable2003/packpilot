@@ -4,8 +4,20 @@
   "description": "AI-assisted package search and safe npm installs in the current workspace.",
   "version": "0.1.0",
   "publisher": "unreasonable2003",
+  "keywords": [
+    "npm",
+    "packages",
+    "search",
+    "install",
+    "vscode"
+  ],
   "engines": {
     "vscode": "^1.85.0"
+  },
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": false
+    }
   },
   "categories": [
     "Other"
@@ -25,7 +37,7 @@
   "scripts": {
     "build": "tsc -p .",
     "watch": "tsc -w -p .",
-    "clean": "rm -rf out",
+    "clean": "node -e \"require('fs').rmSync('out', { recursive: true, force: true })\"",
     "lint": "tsc -p . --noEmit"
   },
   "devDependencies": {
