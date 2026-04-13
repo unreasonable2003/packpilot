@@ -1,0 +1,36 @@
+{
+  "name": "packpilot",
+  "displayName": "PackPilot",
+  "description": "AI-assisted package search and safe npm installs in the current workspace.",
+  "version": "0.1.0",
+  "publisher": "unreasonable2003",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:packpilot.openSearch"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "packpilot.openSearch",
+        "title": "PackPilot: Open Package Search"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "tsc -p .",
+    "watch": "tsc -w -p .",
+    "clean": "rm -rf out",
+    "lint": "tsc -p . --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.7.2"
+  }
+}
